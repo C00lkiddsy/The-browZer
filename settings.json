@@ -1,0 +1,40 @@
+{
+  "home_url": "https://www.google.com",
+  "search_engine": "Google",
+  "download_dir": "",
+  "js_enabled": true,
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+  "open_tabs": [
+    {
+      "url": "https://www.google.com/",
+      "pinned": false
+    }
+  ],
+  "night_mode": false,
+  "permissions": {},
+  "default_zoom": 100,
+  "auto_images": true,
+  "show_bookmarks_bar": true,
+  "confirm_close": true,
+  "tab_position": "top",
+  "new_tab_page": "home",
+  "block_popups": true,
+  "cookie_policy": "allow",
+  "font_size": 16,
+  "smooth_scroll": true,
+  "spell_check": false,
+  "show_home_button": true,
+  "show_nav_buttons": true,
+  "double_click_close": false,
+  "minimum_font_size": 0,
+  "caret_browsing": false,
+  "dns_prefetch": true,
+  "local_storage": true,
+  "webgl": true,
+  "download_sound": false,
+  "session_restore": true,
+  "show_status_bar": true,
+  "mouse_wheel_tabs": true,
+  "open_in_new_tab": true,
+  "show_full_url": true
+}

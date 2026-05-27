@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head><meta charset="UTF-8"><title>Новая вкладка</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:#1a1a2e;color:#fff;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;min-height:100vh;padding:40px;
+}
+h1{font-size:28px;font-weight:300;margin-bottom:8px;color:#e0e0e0}
+.time{font-size:48px;font-weight:700;margin-bottom:30px;color:#fff}
+.search{width:100%;max-width:600px;margin-bottom:40px}
+.search input{
+  width:100%;padding:14px 20px;border-radius:24px;border:2px solid #333;
+  background:#16213e;color:#fff;font-size:16px;outline:none;transition:.2s
+}
+.search input:focus{border-color:#4a9eff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:16px;width:100%;max-width:640px}
+.card{
+  background:#16213e;border-radius:12px;padding:16px;text-align:center;
+  cursor:pointer;transition:.2s;text-decoration:none;color:#ccc
+}
+.card:hover{background:#1a2744;transform:translateY(-2px)}
+.card .icon{font-size:32px;margin-bottom:6px;display:block}
+.card .name{font-size:12px;word-break:break-all;line-height:1.3}
+</style></head>
+<body>
+<div class="time" id="time"></div>
+<div class="search"><input id="q" placeholder="Поиск или URL..." autofocus></div>
+<div class="grid" id="grid"></div>
+<script>
+function updateTime(){document.getElementById('time').textContent=new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'})}
+updateTime();setInterval(updateTime,1000)
+document.getElementById('q').addEventListener('keydown',function(e){if(e.key==='Enter'){
+  var v=this.value.trim();if(!v)return;
+  if(v.includes('.')&&!/\s/.test(v)){location='https://'+v}
+  else{location='https://www.google.com/search?q='+encodeURIComponent(v)}
+}})
+var bm=JSON.parse(localStorage.getItem('speeddial')||'[]');
+var g=document.getElementById('grid');
+if(bm.length===0){
+  var d=document.createElement('div');d.style.cssText='grid-column:1/-1;text-align:center;color:#666;font-size:14px';
+  d.textContent='Добавьте закладки — они появятся здесь';g.appendChild(d)
+}
+bm.forEach(function(b){
+  var a=document.createElement('a');a.className='card';a.href=b.u;var i=document.createElement('span');
+  i.className='icon';i.textContent=b.i||'🌐';a.appendChild(i);
+  var n=document.createElement('span');n.className='name';n.textContent=b.t;
+  a.appendChild(n);g.appendChild(a)
+});
+</script>
+</body>
+</html>
